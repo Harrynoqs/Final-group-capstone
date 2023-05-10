@@ -28,11 +28,11 @@ Twowheeler.create(name: "Kawasaki Ninja ZX-10R", description: "A powerful and ae
 
 
 
-# Reservation.create(user_id: 1, twowheeler_id: 1, city: 'Nairobi', duration_of_test_drive: 1, date_of_reservation: '2023-03-15' )
-# Reservation.create(user_id: 2, twowheeler_id: 2, city: 'Mombasa', duration_of_test_drive: 1, date_of_reservation: '2023-03-25')
-# Reservation.create(user_id: 3,twowheeler_id: 3, city: 'Malindi', duration_of_test_drive: 2, date_of_reservation: '2023-03-20')
-# Reservation.create(user_id: 4, twowheeler_id: 4, city: 'Nakuru', duration_of_test_drive: 1, date_of_reservation: '2023-04-15')
-# Reservation.create(user_id: 5, twowheeler_id: 5, city: 'Kisumu', duration_of_test_drive: 1, date_of_reservation: '2023-04-22' )
-# Reservation.create(user_id: 6, twowheeler_id: 6, city: 'Dar', duration_of_test_drive: 2, date_of_reservation: '2023-04-25')
-# Reservation.create(user_id: 7,twowheeler_id: 7, city: 'Voi', duration_of_test_drive: 1, date_of_reservation: '2023-04-20')
-# Reservation.create(user_id: 8, twowheeler_id: 8, city: 'Machakos', duration_of_test_drive: 1, date_of_reservation: '2023-04-15')
+Reservation.create(user_id: 1, twowheeler_id: 1, city: 'Nairobi', duration_of_test_drive: 1, date_of_reservation: '2023-03-15' )
+Reservation.create(user_id: 2, twowheeler_id: 2, city: 'Mombasa', duration_of_test_drive: 1, date_of_reservation: '2023-03-25')
+Reservation.create(user_id: 3,twowheeler_id: 3, city: 'Malindi', duration_of_test_drive: 2, date_of_reservation: '2023-03-20')
+Reservation.create(user_id: 4, twowheeler_id: 4, city: 'Nakuru', duration_of_test_drive: 1, date_of_reservation: '2023-04-15')
+Reservation.create(user_id: 5, twowheeler_id: 5, city: 'Kisumu', duration_of_test_drive: 1, date_of_reservation: '2023-04-22' )
+Reservation.create(user_id: 6, twowheeler_id: 6, city: 'Dar', duration_of_test_drive: 2, date_of_reservation: '2023-04-25')
+Reservation.create(user_id: 7,twowheeler_id: 7, city: 'Voi', duration_of_test_drive: 1, date_of_reservation: '2023-04-20')
+Reservation.create(user_id: 8, twowheeler_id: 8, city: 'Machakos', duration_of_test_drive: 1, date_of_reservation: '2023-04-15')
