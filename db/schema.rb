@@ -18,8 +18,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_082124) do
     t.string "city"
     t.integer "duration_of_test_drive"
     t.date "date_of_reservation"
+    t.bigint "user_id", null: false
+    t.bigint "twowheeler_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["twowheeler_id"], name: "index_reservations_on_twowheeler_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
   create_table "twowheelers", force: :cascade do |t|
@@ -40,4 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_10_082124) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "reservations", "twowheelers"
+  add_foreign_key "reservations", "users"
 end
