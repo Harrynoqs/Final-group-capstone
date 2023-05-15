@@ -24,7 +24,7 @@
 
 # 📖 MotoMate <a name="about-project"></a>
 
-- Cyclehub is a booking app that allows users to easily book and reserve motorcycles online. With Cyclehub, users can log in and access a wide range of motorcycles to choose from. You can check the front-end of this project [here.](https://github.com/Harrynoqs/Final-group-capstone-frontend)
+- SEH-BIKES is a booking app that allows users to easily book and reserve motorcycles online. With SEH-BIKES, users can log in and access a wide range of motorcycles to choose from. You can check the front-end of this project [here.](https://github.com/Harrynoqs/Final-group-capstone-frontend)
 
 ## 🛠 Built With <a name="built-with"></a>
 
