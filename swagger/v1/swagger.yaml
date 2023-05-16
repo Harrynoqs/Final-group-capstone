@@ -5,109 +5,110 @@ info:
   version: v1
 paths:
   "/api/v1/twowheelers":
-    get:
-      summary: list twowheelers
-      responses:
-        '200':
-          description: successful
     post:
-      summary: create twowheeler
+      summary: Creates a bike
+      tags:
+      - Create new bike
+      parameters: []
       responses:
-        '200':
-          description: successful
-  "/api/v1/twowheelers/new":
-    get:
-      summary: new twowheeler
-      responses:
-        '200':
-          description: successful
-  "/api/v1/twowheelers/{id}/edit":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: edit twowheeler
-      responses:
-        '200':
-          description: successful
+        '201':
+          description: bike created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                image_url:
+                  type: string
+                price:
+                  type: integer
+                model_year:
+                  type: integer
+                engine_type:
+                  type: string
+                fuel_type:
+                  type: string
+              required:
+              - name
+              - description
+              - image_url
+              - price
   "/api/v1/twowheelers/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
     get:
-      summary: show twowheeler
+      summary: Retrieves bike details
+      tags:
+      - Get bike details
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
       responses:
         '200':
-          description: successful
-    patch:
-      summary: update twowheeler
-      responses:
-        '200':
-          description: successful
-    put:
-      summary: update twowheeler
-      responses:
-        '200':
-          description: successful
-    delete:
-      summary: delete twowheeler
-      responses:
-        '200':
-          description: successful
-  "/api/v1/reserve":
-    post:
-      summary: reserve reservation
-      responses:
-        '200':
-          description: successful
-  "/api/v1/reserve/{id}":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    delete:
-      summary: checkout reservation
-      responses:
-        '200':
-          description: successful
-  "/api/v1/login":
-    post:
-      summary: login user
-      responses:
-        '200':
-          description: successful
-  "/api/v1/register":
-    post:
-      summary: register user
-      responses:
-        '200':
-          description: successful
-  "/api/v1/users/{id}/reservations":
-    parameters:
-    - name: id
-      in: path
-      description: id
-      required: true
-      schema:
-        type: string
-    get:
-      summary: reservations user
-      responses:
-        '200':
-          description: successful
+          description: blog found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                  price:
+                    type: string
+                  model_year:
+                    type: integer
+                  engine_type:
+                    type: string
+                  fuel_type:
+                    type: string
+                required:
+                - name
+                - description
+                - image_url
+                - price
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  description:
+                    type: string
+                  image_url:
+                    type: string
+                  price:
+                    type: string
+                  model_year:
+                    type: integer
+                  engine_type:
+                    type: string
+                  fuel_type:
+                    type: string
+                required:
+                - name
+                - description
+                - image_url
+                - price
+        '404':
+          description: bike not found
 servers:
 - url: https://{defaultHost}
   variables:
     defaultHost:
-      default: http://localhost:3000
+      default: www.example.com
