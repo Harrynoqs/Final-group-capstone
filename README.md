@@ -22,7 +22,7 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 MotoMate <a name="about-project"></a>
+# 📖 SEH-BIKES <a name="about-project"></a>
 
 - SEH-BIKES is a booking app that allows users to easily book and reserve motorcycles online. With SEH-BIKES, users can log in and access a wide range of motorcycles to choose from. You can check the front-end of this project [here.](https://github.com/Harrynoqs/Final-group-capstone-frontend)
 
