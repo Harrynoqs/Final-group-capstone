@@ -15,7 +15,7 @@ describe 'Reservations API' do
           twowheeler_id: { type: :integer }
 
         },
-        required: %w[city, duration_of_test_drive, date_of_reservation, user_id, twowheeler_id]
+        required: %w[city duration_of_test_drive date_of_reservation user_id twowheeler_id]
       }
 
       response '201', 'reservation created' do

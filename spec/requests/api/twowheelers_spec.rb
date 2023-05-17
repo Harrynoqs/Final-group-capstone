@@ -14,13 +14,13 @@ RSpec.describe '/twowheelers', type: :request do
           price: { type: :integer },
           model_year: { type: :integer },
           engine_type: { type: :string },
-          fuel_type: { type: :string },
+          fuel_type: { type: :string }
         },
-        required: ['name', 'description', 'image_url', 'price']
+        required: %w[name description image_url price]
       }
 
       response '201', 'bike created' do
-        let(:twowheeler) {
+        let(:twowheeler) do
           {
             name: 'foo',
             description: 'bar',
@@ -30,17 +30,17 @@ RSpec.describe '/twowheelers', type: :request do
             engine_type: 'inline',
             fuel_type: 'petrol'
           }
-        }
+        end
         run_test!
       end
 
       response '422', 'invalid request' do
-        let(:twowheeler) {
+        let(:twowheeler) do
           {
             name: 'foo',
-            description: 'bar',
+            description: 'bar'
           }
-        }
+        end
         run_test!
       end
     end
@@ -63,11 +63,11 @@ RSpec.describe '/twowheelers', type: :request do
                  price: { type: :string },
                  model_year: { type: :integer },
                  engine_type: { type: :string },
-                 fuel_type: { type: :string },
+                 fuel_type: { type: :string }
                },
-               required: ['name', 'description', 'image_url', 'price']
+               required: %w[name description image_url price]
 
-        let(:id) {
+        let(:id) do
           Twowheeler.create(
             name: 'foo',
             description: 'bar',
@@ -77,7 +77,7 @@ RSpec.describe '/twowheelers', type: :request do
             engine_type: 'inline',
             fuel_type: 'petrol'
           ).id
-        }
+        end
         run_test!
       end
 

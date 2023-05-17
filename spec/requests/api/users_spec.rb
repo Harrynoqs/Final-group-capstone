@@ -18,7 +18,7 @@ describe 'Users API' do
       end
 
       response '422', 'invalid request' do
-        let(:user) { { name: 02 } }
+        let(:user) { { name: 0o2 } }
         run_test!
       end
     end
