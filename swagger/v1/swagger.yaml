@@ -4,6 +4,40 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/v1/reservations/user/{id}":
+    post:
+      summary: creates a reservation
+      tags:
+      - Create a reservation
+      parameters:
+      - name: id
+        in: path
+        type: string
+        schema:
+          type: object
+          properties:
+            city:
+              type: string
+            duration_of_test_drive:
+              type: integer
+            date_of_reservation:
+              type: string
+            user_id:
+              type: integer
+            twowheeler_id:
+              type: integer
+          required:
+          - city
+          - duration_of_test_drive
+          - date_of_reservation
+          - user_id
+          - twowheeler_id
+        required: true
+      responses:
+        '201':
+          description: reservation created
+        '422':
+          description: invalid request
   "/api/v1/twowheelers":
     post:
       summary: Creates a bike
@@ -53,7 +87,7 @@ paths:
           type: string
       responses:
         '200':
-          description: blog found
+          description: Bike found
           content:
             application/json:
               schema:
@@ -107,6 +141,67 @@ paths:
                 - price
         '404':
           description: bike not found
+  "/api/v1/login":
+    post:
+      summary: Login a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: Login success
+        '403':
+          description: Login failure, User does not exist
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: User name
+              required:
+              - name
+  "/api/v1/register":
+    post:
+      summary: Register a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User is registered successfully
+        '200':
+          description: User already exists
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: User name
+              required:
+              - name
+  "/api/v1/reservations/{id}":
+    get:
+      summary: Get user reservations
+      tags:
+      - Users
+      parameters:
+      - name: id
+        in: path
+        description: User ID
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservation successfully found
+        '404':
+          description: User could not be found
 servers:
 - url: https://{defaultHost}
   variables:
