@@ -1,48 +1,66 @@
 require 'swagger_helper'
 
-describe 'Users API' do
-  path '/users' do
-    post 'creates a user' do
-      tags 'Create a new user'
-      consumes 'application/json', 'application/xml'
-      parameter name: :user, in: :body, schema: {
+RSpec.describe 'Api::V1::Users', type: :request do
+  path '/api/v1/login' do
+    post 'Login a user' do
+      tags 'Users'
+      consumes 'application/json'
+      parameter name: :name, in: :body, schema: {
         type: :object,
         properties: {
-          name: { type: :string }
+          name: { type: :string, description: 'User name' }
         },
         required: ['name']
       }
-      response '201', 'user created' do
-        let(:user) { { name: 'Savannah' } }
+
+      response '200', 'Login success' do
+        let(:name) { 'John Doe' }
         run_test!
       end
 
-      response '422', 'invalid request' do
-        let(:user) { { name: 0o2 } }
+      response '403', 'Login failure, User does not exist' do
+        let(:name) { 'NonExistingUser' }
         run_test!
       end
     end
   end
-  path '/users/{id}' do
-    get 'Retrieves a user' do
-      tags 'Find a user'
-      produces 'application/json', 'application/xml'
-      parameter name: :id, in: :path, type: :string
 
-      response '200', 'user found' do
-        schema type: :object,
-               properties: {
-                 id: { type: :integer },
-                 name: { type: :string }
-               },
-               required: %w[id name]
+  path '/api/v1/register' do
+    post 'Register a user' do
+      tags 'Users'
+      consumes 'application/json'
+      parameter name: :name, in: :body, schema: {
+        type: :object,
+        properties: {
+          name: { type: :string, description: 'User name' }
+        },
+        required: ['name']
+      }
 
-        let(:id) { User.create(name: 'Savannah').id }
+      response '201', 'User is registered successfully' do
+        let(:name) { 'John Doe' }
         run_test!
       end
 
-      response '404', 'user not found' do
-        let(:id) { 'invalid' }
+      response '200', 'User already exists' do
+        let(:name) { 'ExistingUser' }
+        run_test!
+      end
+    end
+  end
+
+  path '/api/v1/reservations/{id}' do
+    get 'Get user reservations' do
+      tags 'Users'
+      parameter name: :id, in: :path, type: :integer, description: 'User ID'
+
+      response '200', 'Reservation successfully found' do
+        let(:id) { User.first.id }
+        run_test!
+      end
+
+      response '404', 'User could not be found' do
+        let(:id) { 9999 }
         run_test!
       end
     end

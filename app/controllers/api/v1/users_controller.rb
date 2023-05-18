@@ -1,6 +1,8 @@
 class Api::V1::UsersController < ApplicationController
   # CSRF Token Validations SKIP
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+
   def login
     # Check if user is available
     user = User.find_by(name: params[:name])
@@ -9,6 +11,11 @@ class Api::V1::UsersController < ApplicationController
     else
       render status: 200, json: { message: 'Login success', status: 200, data: user }
     end
+  end
+
+  def index
+    @users = User.all.order(:id)
+    render json: @users
   end
 
   def register

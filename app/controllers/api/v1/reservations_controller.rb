@@ -1,6 +1,13 @@
 class Api::V1::ReservationsController < ApplicationController
   # CSRF Token Validations SKIP
   protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+
+  def index
+    @reservations = Reservation.all.order(:id)
+    render json: @reservations
+  end
+
   def reserve
     # Create an instance of reservation
     reservation = Reservation.new(city: params[:city], duration_of_test_drive: params[:duration_of_test_drive],

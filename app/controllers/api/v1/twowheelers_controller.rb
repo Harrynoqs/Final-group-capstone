@@ -1,4 +1,7 @@
 class Api::V1::TwowheelersController < ApplicationController
+  protect_from_forgery with: :null_session
+  skip_before_action :verify_authenticity_token
+
   before_action :set_twowheeler, only: %i[show update destroy]
 
   def index
@@ -13,7 +16,7 @@ class Api::V1::TwowheelersController < ApplicationController
   def create
     @twowheeler = Twowheeler.new(twowheeler_params)
     if @twowheeler.save
-      render json: @twowheeler, status: :created, location: api_v1_twowheeler_url(@twowheeler)
+      render json: { id: @twowheeler.id }, status: :created, location: api_v1_twowheeler_url(@twowheeler)
     else
       render json: @twowheeler.errors, status: :unprocessable_entity
     end
